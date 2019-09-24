@@ -3,7 +3,7 @@ import os
 def code_factory(lang, ext, code):
     if not os.path.isdir(lang):
         os.mkdir(lang)
-    for i in range(1000):
+    for i in range(10000):
         with open(f"{lang}/source-{i}.{ext}", 'w+') as f:
             f.write(code)
     print(f"{lang.capitalize()} done!")
