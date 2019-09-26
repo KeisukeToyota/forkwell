@@ -4,7 +4,7 @@ from multiprocessing import Pool, cpu_count
 def code_factory(lang, ext, code):
     if not os.path.isdir(lang):
         os.mkdir(lang)
-    for i in range(100):
+    for i in range(1000):
         with open(f"{lang}/source-{i}.{ext}", 'w+') as f:
             f.write(code)
     print(f"{lang.capitalize()} done!")
@@ -102,7 +102,7 @@ def callback(f):
 if __name__ == '__main__':
     funcs = [python, ruby, rust, go, c, cpp, php]
 
-    with(Pool(cpu_count())) as p:
+    with Pool(cpu_count()) as p:
         p.map(callback, funcs)
 
     #commit()
