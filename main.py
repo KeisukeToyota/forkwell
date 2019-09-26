@@ -12,82 +12,43 @@ def code_factory(lang, ext, code):
 def python():
     lang = 'python'
     ext = 'py'
-    code = """
-def fib(n):
-    if n < 2:
-        return n
-    return fib(n-1) + fib(n-2)
-    """
-    code_factory(lang, ext, code * 100000)
+    code = 'print("Hello world!")\n' * 100000
+    code_factory(lang, ext, code)
 
 def ruby():
     lang = 'ruby'
     ext = 'rb'
-    code = """
-def fib(n):
-    if n < 2:
-        return n
-    return fib(n-1) + fib(n-2) 
-    """
-    code_factory(lang, ext, code * 100000)
+    code = 'puts "Hello world!"\n' * 100000
+    code_factory(lang, ext, code)
 
 def rust():
     lang = 'rust'
     ext = 'rs'
-    code = """
-fn main() {{
-{}
-}}
-
-    """.format('  println!("Hello world");\n' * 100000)
+    code = "fn main() {{\n{}\n}}\n".format('\tprintln!("Hello world");\n' * 100000)
     code_factory(lang, ext, code)
 
 def go():
     lang = 'go'
     ext = 'go'
-    code = """
-package main
-
-import "fmt"
-
-func main() {{
-{}
-}}
-    """.format('\tfmt.Println("Hello world")\n' * 100000)
+    code = 'package main\n\nimport "fmt"\n\nfunc main() {{\n{}\n}}\n'.format('\tfmt.Println("Hello world")\n' * 100000)
     code_factory(lang, ext, code)
 
 def c():
     lang = 'c'
     ext = 'c'
-    code = """
-#include <stdio.h>
-
-int main() {{
-{}
-}}
-    """.format('\tprintf("Hello world");\n' * 100000)
+    code = '#include <stdio.h>\n\nint main() {{\n{}\n}}\n'.format('\tprintf("Hello world");\n' * 100000)
     code_factory(lang, ext, code)
 
 def cpp():
     lang = 'c++'
     ext = 'cpp'
-    code = """
-#include <iostream>
-
-int main() {{
-{}
-}}
-    """.format('\tstd::cout << "Hello world" << std::endl;\n' * 100000)
+    code = '#include <iostream>\n\nint main() {{\n{}\n}}\n'.format('\tstd::cout << "Hello world" << std::endl;\n' * 100000)
     code_factory(lang, ext, code)
 
 def php():
     lang = 'php'
     ext = 'php'
-    code = """
-<?php
-
-{}
-    """.format('echo "Hello world";\n' * 100000)
+    code = '<?php\n\n{}\n'.format('echo "Hello world";\n' * 100000)
     code_factory(lang, ext, code)
 
 def commit():
@@ -105,4 +66,4 @@ if __name__ == '__main__':
     with Pool(cpu_count()) as p:
         p.map(callback, funcs)
 
-    #commit()
+    commit()
